@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MessageCircle, X } from 'lucide-react';
+import { X, ArrowUp } from 'lucide-react';
 
 const WHATSAPP_NUMBER = '85291670580';
 const WECHAT_ID = 'Wu63863';
@@ -25,35 +25,69 @@ function WeChatIcon({ size = 18 }) {
 export default function QuickContact() {
   const { t } = useTranslation();
   const [showWeChat, setShowWeChat] = useState(false);
+  const [showBackTop, setShowBackTop] = useState(false);
 
-  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}`;
+  // Track scroll for back-to-top visibility
+  useEffect(() => {
+    const onScroll = () => setShowBackTop(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Scroll-lock body when modal is open
+  useEffect(() => {
+    document.body.style.overflow = showWeChat ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [showWeChat]);
+
+  // Close modal on Escape key
+  useEffect(() => {
+    if (!showWeChat) return;
+    const onKey = (e) => { if (e.key === 'Escape') setShowWeChat(false); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [showWeChat]);
+
+  const btnBase = 'w-11 h-11 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 active:scale-95 hover:scale-110';
 
   return (
     <>
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3" style={{ marginBottom: '52px' }}>
+      {/* Fixed action stack — bottom-24 on mobile keeps it above cookie banner */}
+      <div className="fixed bottom-24 sm:bottom-8 right-4 sm:right-6 z-50 flex flex-col gap-2.5 items-center">
+        {showBackTop && (
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className={`${btnBase} bg-navy-900/80 hover:bg-navy-900 backdrop-blur-sm text-gold-400`}
+            aria-label={t('common.back_to_top')}
+          >
+            <ArrowUp size={17} />
+          </button>
+        )}
         <a
-          href={waUrl}
+          href={`https://wa.me/${WHATSAPP_NUMBER}`}
           target="_blank"
           rel="noopener noreferrer"
-          title={t('quick.whatsapp')}
+          className={`${btnBase} bg-[#25D366] hover:bg-[#1ea855] text-white`}
           aria-label={t('quick.whatsapp')}
-          className="w-11 h-11 bg-[#25D366] hover:bg-[#1ea855] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
         >
           <WhatsAppIcon size={20} />
         </a>
         <button
           onClick={() => setShowWeChat(true)}
-          title={t('quick.wechat')}
+          className={`${btnBase} bg-[#07C160] hover:bg-[#06ad56] text-white`}
           aria-label={t('quick.wechat')}
-          className="w-11 h-11 bg-[#07C160] hover:bg-[#06ad56] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
         >
           <WeChatIcon size={20} />
         </button>
       </div>
 
+      {/* WeChat modal */}
       {showWeChat && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label={t('quick.wechat_tip')}
           onClick={() => setShowWeChat(false)}
         >
           <div
@@ -62,7 +96,7 @@ export default function QuickContact() {
           >
             <button
               onClick={() => setShowWeChat(false)}
-              className="absolute top-2 right-2 text-gray-400 hover:text-gray-700 p-1"
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100 transition-colors"
               aria-label="Close"
             >
               <X size={18} />
@@ -73,10 +107,11 @@ export default function QuickContact() {
             </div>
             <img
               src="/images/wechat-qr.jpg"
-              alt="WeChat QR"
+              alt="WeChat QR Code"
               className="w-full max-w-[220px] mx-auto rounded-lg"
+              loading="lazy"
             />
-            <div className="mt-3 bg-gray-50 rounded-lg border border-gray-200 px-4 py-2 text-center">
+            <div className="mt-3 bg-gray-50 rounded-lg border border-gray-200 px-4 py-2">
               <p className="text-xs text-gray-400 mb-0.5">WeChat ID</p>
               <p className="text-navy-900 font-bold text-base tracking-widest select-all">{WECHAT_ID}</p>
             </div>

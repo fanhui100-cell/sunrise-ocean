@@ -96,11 +96,11 @@ export default function About() {
             <div className="h-0.5 w-12 bg-gold-500 mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {values.map((v, i) => {
               const Icon = valueIcons[i] || Anchor;
               return (
-                <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+                <div key={i} className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100 text-center">
                   <div className="w-14 h-14 rounded-full bg-navy-900/5 flex items-center justify-center mx-auto mb-4">
                     <Icon size={24} className="text-navy-900" />
                   </div>

@@ -84,14 +84,14 @@ export default function Home() {
     <div className="min-h-screen">
       <SEO titleKey={t('seo.home.title')} descKey={t('seo.home.description')} path="/" />
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center bg-gradient-to-b from-navy-900 via-navy-800 to-navy-700 overflow-hidden">
+      <section className="relative min-h-[100svh] min-h-screen flex items-center bg-gradient-to-b from-navy-900 via-navy-800 to-navy-700 overflow-hidden">
         <OceanPattern />
 
-        {/* Decorative circles */}
-        <div className="absolute top-1/4 right-10 w-96 h-96 rounded-full bg-gold-500/5 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 left-10 w-64 h-64 rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
+        {/* Decorative circles — hidden on mobile for performance */}
+        <div className="hidden sm:block absolute top-1/4 right-10 w-96 h-96 rounded-full bg-gold-500/5 blur-3xl pointer-events-none" />
+        <div className="hidden sm:block absolute bottom-1/4 left-10 w-64 h-64 rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32 text-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-24 sm:pb-32 text-center">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 border border-gold-500/30 bg-gold-500/10 text-gold-400 text-xs px-4 py-1.5 rounded-full mb-8 uppercase tracking-widest">
             <Anchor size={12} />
@@ -99,7 +99,7 @@ export default function Home() {
           </div>
 
           {/* Company Name */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3 leading-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-3 leading-tight">
             {t('hero.company_zh')}
           </h1>
           <h2 className="text-lg sm:text-xl lg:text-2xl font-light text-gold-400 mb-6 tracking-widest uppercase">

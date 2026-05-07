@@ -126,7 +126,7 @@ export default function Navbar() {
                 <ChevronDown size={12} className={`transition-transform ${langOpen ? 'rotate-180' : ''}`} />
               </button>
               {langOpen && (
-                <div className="absolute right-0 top-full mt-1 bg-navy-900 border border-white/10 rounded-lg shadow-xl overflow-hidden z-50 min-w-[160px]">
+                <div className="absolute right-0 top-full mt-1 bg-navy-900 border border-white/10 rounded-lg shadow-xl overflow-y-auto z-50 min-w-[160px] max-h-72">
                   {LANGS.map((l) => (
                     <button
                       key={l.code}
@@ -164,7 +164,7 @@ export default function Navbar() {
                 <ChevronDown size={10} className={`transition-transform ${langOpen ? 'rotate-180' : ''}`} />
               </button>
               {langOpen && (
-                <div className="absolute right-0 top-full mt-1 bg-navy-900 border border-white/10 rounded-lg shadow-xl overflow-hidden z-50 min-w-[160px]">
+                <div className="absolute right-0 top-full mt-1 bg-navy-900 border border-white/10 rounded-lg shadow-xl overflow-y-auto z-50 min-w-[160px] max-h-72">
                   {LANGS.map((l) => (
                     <button
                       key={l.code}
@@ -191,14 +191,18 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white border-t border-navy-900/10 px-4 py-3 space-y-1">
+      {/* Mobile Menu — slide-down animation */}
+      <div
+        className={`md:hidden bg-white border-t border-navy-900/10 overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="px-4 py-3 space-y-1">
           {navLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              className={`block px-4 py-2.5 text-sm font-medium rounded transition-colors ${
+              className={`block px-4 py-3 text-sm font-medium rounded transition-colors ${
                 isActive(link.to)
                   ? 'text-gold-600 bg-navy-900/8'
                   : 'text-navy-900/70 hover:text-navy-900 hover:bg-navy-900/8'
@@ -208,7 +212,7 @@ export default function Navbar() {
             </Link>
           ))}
         </div>
-      )}
+      </div>
 
       {searchOpen && <SearchModal onClose={() => setSearchOpen(false)} />}
     </nav>
