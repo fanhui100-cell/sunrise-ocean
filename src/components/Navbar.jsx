@@ -5,15 +5,24 @@ import { Menu, X, Globe, ChevronDown, Search } from 'lucide-react';
 import SearchModal from './SearchModal';
 
 const LANGS = [
+  { code: 'en', label: 'English' },
   { code: 'zh', label: '繁體中文' },
   { code: 'zh-CN', label: '简体中文' },
-  { code: 'en', label: 'English' },
   { code: 'vi', label: 'Tiếng Việt' },
   { code: 'id', label: 'Bahasa Indonesia' },
   { code: 'ms', label: 'Bahasa Malaysia' },
+  { code: 'ja', label: '日本語' },
+  { code: 'ko', label: '한국어' },
+  { code: 'es', label: 'Español' },
+  { code: 'pt', label: 'Português' },
+  { code: 'th', label: 'ภาษาไทย' },
+  { code: 'fil', label: 'Filipino' },
+  { code: 'bn', label: 'বাংলা' },
+  { code: 'km', label: 'ភាសាខ្មែរ' },
+  { code: 'ar', label: 'العربية' },
 ];
 
-const LANG_SHORT = { zh: '繁', 'zh-CN': '简', en: 'EN', vi: 'VI', id: 'ID', ms: 'MY' };
+const LANG_SHORT = { zh: '繁', 'zh-CN': '简', en: 'EN', vi: 'VI', id: 'ID', ms: 'MY', ja: 'JP', ko: 'KO', es: 'ES', pt: 'PT', th: 'TH', fil: 'FIL', bn: 'BN', km: 'KM', ar: 'AR' };
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();

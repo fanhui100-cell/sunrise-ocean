@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import './i18n/index.js';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -15,10 +17,20 @@ import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 
+function RTLHandler() {
+  const { i18n } = useTranslation();
+  useEffect(() => {
+    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
+  return null;
+}
+
 export default function App() {
   return (
     <HelmetProvider>
     <BrowserRouter>
+      <RTLHandler />
       <ScrollToTop />
       <NavProgress />
       <div className="flex flex-col min-h-screen">
