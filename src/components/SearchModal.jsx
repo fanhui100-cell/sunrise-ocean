@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Search, X, ArrowRight, FileText, Briefcase, MapPin } from 'lucide-react';
@@ -15,24 +15,33 @@ function buildIndex(t) {
     { title: t('nav.contact'), route: '/contact', desc: t('contact.subtitle') },
   ].forEach(p => items.push({ ...p, type: 'page' }));
 
-  t('news.items', { returnObjects: true }).forEach(n => {
-    items.push({ type: 'page', title: n.title, desc: n.excerpt, route: '/news' });
-  });
-
-  t('services.items', { returnObjects: true }).forEach(s => {
-    items.push({ type: 'service', title: s.name, desc: s.desc, route: '/services' });
-  });
-
-  t('projects.items', { returnObjects: true }).forEach(p => {
-    items.push({
-      type: 'project',
-      title: p.nameShort || p.name,
-      desc: p.desc,
-      route: '/projects',
-      location: p.location,
-      category: p.category,
+  const newsItems = t('news.items', { returnObjects: true });
+  if (Array.isArray(newsItems)) {
+    newsItems.forEach(n => {
+      items.push({ type: 'page', title: n.title, desc: n.excerpt, route: '/news' });
     });
-  });
+  }
+
+  const serviceItems = t('services.items', { returnObjects: true });
+  if (Array.isArray(serviceItems)) {
+    serviceItems.forEach(s => {
+      items.push({ type: 'service', title: s.name, desc: s.desc, route: '/services' });
+    });
+  }
+
+  const projectItems = t('projects.items', { returnObjects: true });
+  if (Array.isArray(projectItems)) {
+    projectItems.forEach(p => {
+      items.push({
+        type: 'project',
+        title: p.nameShort || p.name,
+        desc: p.desc,
+        route: '/projects',
+        location: p.location,
+        category: p.category,
+      });
+    });
+  }
 
   return items;
 }
@@ -50,19 +59,18 @@ export default function SearchModal({ onClose }) {
   const [query, setQuery] = useState('');
   const inputRef = useRef(null);
 
-  const index = buildIndex(t);
+  const index = useMemo(() => buildIndex(t), [t]);
 
-  const results = query.trim().length < 1
-    ? []
-    : index.filter(item => {
-        const q = query.toLowerCase();
-        return (
-          item.title.toLowerCase().includes(q) ||
-          (item.desc && item.desc.toLowerCase().includes(q)) ||
-          (item.location && item.location.toLowerCase().includes(q)) ||
-          (item.category && item.category.toLowerCase().includes(q))
-        );
-      }).slice(0, 10);
+  const results = useMemo(() => {
+    if (query.trim().length < 1) return [];
+    const q = query.toLowerCase();
+    return index.filter(item =>
+      item.title.toLowerCase().includes(q) ||
+      (item.desc && item.desc.toLowerCase().includes(q)) ||
+      (item.location && item.location.toLowerCase().includes(q)) ||
+      (item.category && item.category.toLowerCase().includes(q))
+    ).slice(0, 10);
+  }, [index, query]);
 
   useEffect(() => {
     inputRef.current?.focus();
