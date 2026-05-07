@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 import {
   Anchor, Ship, Waves, Construction, Landmark, Wrench, ClipboardList,
   ChevronRight, ArrowRight, MapPin
@@ -81,6 +82,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <SEO titleKey={t('seo.home.title')} descKey={t('seo.home.description')} path="/" />
       {/* Hero */}
       <section className="relative min-h-screen flex items-center bg-gradient-to-b from-navy-900 via-navy-800 to-navy-700 overflow-hidden">
         <OceanPattern />

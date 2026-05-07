@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import './i18n/index.js';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -16,6 +17,7 @@ import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
+    <HelmetProvider>
     <BrowserRouter>
       <ScrollToTop />
       <NavProgress />
@@ -37,5 +39,6 @@ export default function App() {
         <CookieBanner />
       </div>
     </BrowserRouter>
+    </HelmetProvider>
   );
 }

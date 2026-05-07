@@ -1,6 +1,7 @@
 ﻿import { useTranslation } from 'react-i18next';
 import { Anchor, Ship, Waves, Wrench, Landmark, Construction, ClipboardList } from 'lucide-react';
 import HeroBg from '../components/HeroBg';
+import SEO from '../components/SEO';
 
 function OceanPattern() {
   return (
@@ -23,6 +24,7 @@ export default function Services() {
 
   return (
     <div className="min-h-screen pt-20 lg:pt-24">
+      <SEO titleKey={t('seo.services.title')} descKey={t('seo.services.description')} path="/services" />
       {/* Hero Banner */}
       <section className="relative py-20 min-h-[320px] flex items-center overflow-hidden" style={{ background: 'linear-gradient(150deg, #0d2040 0%, #0a1628 60%, #0e1e38 100%)' }}>
         <HeroBg />

@@ -1,5 +1,6 @@
 ﻿import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 import { Anchor, MapPin, Mail, Building2, Send, CheckCircle, AlertCircle, Loader2, Plus } from 'lucide-react';
 import HeroBg from '../components/HeroBg';
 
@@ -106,6 +107,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen pt-20 lg:pt-24">
+      <SEO titleKey={t('seo.contact.title')} descKey={t('seo.contact.description')} path="/contact" />
       {/* Hero Banner */}
       <section className="relative py-20 min-h-[320px] flex items-center overflow-hidden" style={{ background: 'linear-gradient(150deg, #0d2040 0%, #0a1628 60%, #0e1e38 100%)' }}>
         <HeroBg />

@@ -867,6 +867,28 @@ const en = {
       },
     ],
   },
+  seo: {
+    home: {
+      title: 'Sunrise Ocean Engineering Limited | Hong Kong Marine Engineering',
+      description: 'Sunrise Ocean Engineering Limited is a Hong Kong-based professional marine engineering company providing port & wharf, dredging, offshore pipeline, and road & bridge engineering services across Hong Kong, Macau and Southeast Asia.',
+    },
+    about: {
+      title: 'About Us | Sunrise Ocean Engineering Limited',
+      description: "Learn about Sunrise Ocean Engineering's history, core team and company values. 10+ years of engineering experience across Hong Kong, Macau and 8 Southeast Asian countries.",
+    },
+    services: {
+      title: 'Services | Sunrise Ocean Engineering Limited',
+      description: 'Sunrise Ocean Engineering offers 7 categories of professional services: marine engineering, port & wharf, dredging & reclamation, offshore pipeline, road & bridge, repair & reinforcement, and project management.',
+    },
+    projects: {
+      title: 'Projects | Sunrise Ocean Engineering Limited',
+      description: 'Browse Sunrise Ocean Engineering major projects including HKZMB, Macau 4th Bridge, Indonesia and Vietnam power plant jetties — 50+ international engineering projects.',
+    },
+    contact: {
+      title: 'Contact Us | Sunrise Ocean Engineering Limited',
+      description: 'Contact Sunrise Ocean Engineering Limited for engineering quotations or business cooperation. Based in Hong Kong, serving regional and international engineering markets.',
+    },
+  },
 };
 
 export default en;
