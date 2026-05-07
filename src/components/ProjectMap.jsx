@@ -55,7 +55,6 @@ export default function ProjectMap({ projects }) {
         center={{ lat: 15, lng: 112 }}
         zoom={3}
         options={{
-          styles: DARK_STYLE,
           zoomControl: true,
           streetViewControl: false,
           mapTypeControl: false,
