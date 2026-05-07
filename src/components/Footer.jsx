@@ -91,9 +91,15 @@ export default function Footer() {
 
         <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-white/30 text-xs">{t('footer.copyright')}</p>
-          <Link to="/privacy" className="text-white/25 hover:text-white/50 text-xs transition-colors">
-            Privacy Policy
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link to="/terms" className="text-white/25 hover:text-white/50 text-xs transition-colors">
+              使用條款 / Terms of Use
+            </Link>
+            <span className="text-white/15 text-xs">·</span>
+            <Link to="/privacy" className="text-white/25 hover:text-white/50 text-xs transition-colors">
+              隱私權政策 / Privacy Policy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

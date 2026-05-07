@@ -118,7 +118,21 @@ export default function PrivacyPolicy() {
             ))}
           </div>
 
-          <div className="mt-10 text-center">
+          {/* Related link */}
+          <div className="mt-8 bg-white rounded-2xl p-5 border border-gray-100 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div>
+              <p className="text-navy-900 font-semibold text-sm">Terms of Use / 使用條款</p>
+              <p className="text-gray-400 text-xs mt-0.5">Rules governing access and use of our website</p>
+            </div>
+            <Link
+              to="/terms"
+              className="text-sm text-gold-600 hover:text-gold-700 font-medium transition-colors shrink-0"
+            >
+              Read Terms →
+            </Link>
+          </div>
+
+          <div className="mt-8 text-center">
             <Link to="/" className="inline-flex items-center gap-2 text-sm text-navy-900/60 hover:text-gold-600 transition-colors">
               ← Back to Home
             </Link>
