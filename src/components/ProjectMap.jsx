@@ -59,7 +59,7 @@ export default function ProjectMap({ projects }) {
           streetViewControl: false,
           mapTypeControl: false,
           fullscreenControl: false,
-          scrollwheel: false,
+          gestureHandling: 'cooperative',
         }}
       >
         {projects.map((proj, i) => {
