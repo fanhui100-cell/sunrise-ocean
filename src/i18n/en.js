@@ -768,6 +768,7 @@ const en = {
     view_details: 'Click to view details →',
     contact_us: 'Contact Us',
     back_to_top: 'Back to Top',
+    back_home: 'Back to Home',
   },
   cookie: {
     message: 'This site uses cookies to enhance your browsing experience. By continuing, you agree to our Cookie Policy.',
@@ -894,6 +895,130 @@ const en = {
     placeholder_phone: 'Enter phone number',
     placeholder_location: 'Enter project location (country/city)',
     placeholder_message: 'Describe your project requirements, scope and timeline...',
+  },
+  terms: {
+    title: 'Terms of Use',
+    subtitle: '使用條款',
+    last_updated: '7 May 2025',
+    last_updated_label: 'Last Updated',
+    meta_title: 'Terms of Use | Sunrise Ocean Engineering Limited',
+    meta_desc: 'Terms of Use for the Sunrise Ocean Engineering Limited website — rules governing access and use of our website.',
+    intro: 'Please read these Terms of Use carefully before using our website. By accessing this site you agree to be bound by these terms.',
+    privacy_link_desc: 'How we collect and use your personal data',
+    read_privacy: 'Read Policy',
+    sections: [
+      {
+        title: '1. Acceptance of Terms',
+        body: 'By accessing or using the website at https://sunrise-ocean.vercel.app (the "Website"), you agree to be bound by these Terms of Use ("Terms"). If you do not agree to these Terms, please do not use the Website.\n\nThese Terms apply to all visitors, users, and others who access the Website. Sunrise Ocean Engineering Limited reserves the right to modify these Terms at any time, and such modifications shall be effective immediately upon posting.',
+      },
+      {
+        title: '2. About This Website',
+        body: 'This Website is operated by Sunrise Ocean Engineering Limited (金海洋工程有限公司), a professional engineering company incorporated in Hong Kong (BR No. 78096706-000-05-26-A). The Website is intended to provide general information about our engineering services, project experience, and contact details for business enquiries.',
+      },
+      {
+        title: '3. Permitted Use',
+        body: 'You may use this Website for lawful purposes only. You agree not to:\n\n• Use the Website in any way that violates applicable local, national, or international laws or regulations\n• Transmit any unsolicited or unauthorised advertising or promotional material\n• Attempt to gain unauthorised access to any part of the Website or its related systems\n• Use automated tools (bots, scrapers, crawlers) to extract data from the Website without our prior written consent\n• Reproduce, duplicate, copy, or re-sell any part of the Website in contravention of these Terms\n• Engage in any conduct that restricts or inhibits anyone\'s use or enjoyment of the Website',
+      },
+      {
+        title: '4. Intellectual Property',
+        body: 'All content on this Website — including but not limited to text, graphics, logos, images, project descriptions, and page layouts — is the property of Sunrise Ocean Engineering Limited or its content suppliers and is protected by Hong Kong and international copyright laws.\n\nYou may view and print pages from the Website for your own personal, non-commercial reference. All other use, including reproduction, modification, distribution, or republication of any content, requires our prior written permission.\n\n"Sunrise Ocean Engineering Limited", "金海洋工程有限公司", and associated logos are trademarks of the Company. Nothing on this Website grants any licence to use these marks.',
+      },
+      {
+        title: '5. No Professional Advice',
+        body: 'The information provided on this Website is for general informational purposes only and does not constitute professional engineering, legal, financial, or other specialist advice.\n\nWhile we endeavour to keep information accurate and up to date, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, or suitability of any information on the Website.\n\nAny reliance you place on such information is strictly at your own risk. For professional engineering services, please contact us directly through the enquiry form or by email.',
+      },
+      {
+        title: '6. Enquiries and Communications',
+        body: 'Submitting an enquiry form or sending an email to us does not constitute a contract, agreement, or commitment of any kind. All project engagements are subject to a formal written agreement between Sunrise Ocean Engineering Limited and the client.\n\nWe will endeavour to respond to all genuine business enquiries within 1–2 working days, but cannot guarantee response times. We reserve the right not to respond to enquiries that are unsolicited, abusive, or outside our service scope.',
+      },
+      {
+        title: '7. Third-Party Links and Services',
+        body: 'This Website may contain links to third-party websites (such as WhatsApp, WeChat, Google Maps) for your convenience. These links do not signify our endorsement of those sites. We have no control over the content or availability of linked sites and accept no responsibility for them or for any loss or damage that may arise from your use of them.\n\nThird-party services embedded in this Website (Google Analytics, Google Maps, Web3Forms) operate under their own terms of service and privacy policies.',
+      },
+      {
+        title: '8. Disclaimer of Warranties',
+        body: 'This Website is provided on an "as is" and "as available" basis without any warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement.\n\nSunrise Ocean Engineering Limited does not warrant that the Website will be uninterrupted, error-free, or free of viruses or other harmful components. We do not warrant the accuracy or completeness of any information on the Website.',
+      },
+      {
+        title: '9. Limitation of Liability',
+        body: 'To the fullest extent permitted by law, Sunrise Ocean Engineering Limited, its directors, employees, and agents shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from:\n\n• Your use of, or inability to use, this Website\n• Any errors, mistakes, or inaccuracies in the Website content\n• Unauthorised access to or use of our servers\n• Any interruption or cessation of transmission to or from the Website\n• Any bugs, viruses, or other harmful code transmitted through the Website\n\nSome jurisdictions do not allow the exclusion of certain warranties or limitation of liability; in such jurisdictions, our liability shall be limited to the maximum extent permitted by law.',
+      },
+      {
+        title: '10. Privacy',
+        body: 'Your use of this Website is also governed by our Privacy Policy, which is incorporated into these Terms by reference. Please review our Privacy Policy at https://sunrise-ocean.vercel.app/privacy to understand our practices regarding the collection and use of your personal information.',
+      },
+      {
+        title: '11. Governing Law and Jurisdiction',
+        body: 'These Terms shall be governed by and construed in accordance with the laws of the Hong Kong Special Administrative Region. Any disputes arising in connection with these Terms or the Website shall be subject to the exclusive jurisdiction of the courts of Hong Kong SAR.\n\nIf any provision of these Terms is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.',
+      },
+      {
+        title: '12. Changes to These Terms',
+        body: 'We reserve the right to revise these Terms of Use at any time. Changes will be effective immediately upon posting to the Website. The "Last Updated" date at the top of this page will reflect the most recent revision. Your continued use of the Website following any changes constitutes acceptance of the new Terms.',
+      },
+      {
+        title: '13. Contact Us',
+        body: 'If you have any questions about these Terms of Use, please contact:\n\nSunrise Ocean Engineering Limited (金海洋工程有限公司)\nFlat/Rm 63, 07/F, Woon Lee Commercial Building,\n7-9 Austin Avenue, Tsim Sha Tsui, Kowloon, Hong Kong\nEmail: sunriseoceanengineering@outlook.com\nPhone: +852 9167 0580',
+      },
+    ],
+  },
+  privacy: {
+    title: 'Privacy Policy',
+    last_updated: '7 May 2025',
+    meta_title: 'Privacy Policy | Sunrise Ocean Engineering Limited',
+    meta_desc: 'Privacy Policy for Sunrise Ocean Engineering Limited — how we collect, use, and protect your personal information.',
+    intro: 'We are committed to protecting your privacy. This policy applies to all visitors and enquirers who interact with our website.',
+    terms_link_desc: 'Rules governing access and use of our website',
+    read_terms: 'Read Terms',
+    sections: [
+      {
+        title: '1. About This Policy',
+        body: 'Sunrise Ocean Engineering Limited ("we", "us", or "our") is committed to protecting your personal information. This Privacy Policy explains what information we collect through our website (https://sunrise-ocean.vercel.app), how we use it, and your rights in relation to that information.\n\nBy using this website, you agree to the practices described in this policy.',
+      },
+      {
+        title: '2. Information We Collect',
+        body: 'We collect information in two ways:\n\n**a) Information you provide directly**\nWhen you fill in a contact or project enquiry form, we collect: your name, email address, phone number, company name, and the details of your enquiry or project requirements. File attachments you upload are also received.\n\n**b) Information collected automatically**\nWhen you visit our website, we may automatically collect: your IP address, browser type and version, pages visited, time spent on each page, and referring URL. This is collected through Google Analytics 4.',
+      },
+      {
+        title: '3. How We Use Your Information',
+        body: 'We use the information collected to:\n• Respond to your enquiries and requests\n• Provide project quotations and professional services\n• Improve the content and usability of our website\n• Comply with legal obligations\n\nWe do not sell, rent, or share your personal information with third parties for their marketing purposes.',
+      },
+      {
+        title: '4. Cookies & Analytics',
+        body: 'Our website uses cookies and similar tracking technologies.\n\n**Google Analytics 4**: We use Google Analytics to understand how visitors interact with our website. Google Analytics collects anonymised data about your visit. You can opt out by installing the Google Analytics Opt-out Browser Add-on (tools.google.com/dlpage/gaoptout).\n\n**Session cookies**: Used to maintain functionality during your visit and are deleted when you close your browser.\n\nYou can control cookies through your browser settings. Note that disabling cookies may affect some website functionality.',
+      },
+      {
+        title: '5. Third-Party Services',
+        body: 'We use the following third-party services that may process your data:\n\n• **Web3Forms** — processes contact form submissions. Your submitted data is transmitted to their servers to deliver messages to us. See web3forms.com/privacy.\n• **Google Analytics** — website analytics. See policies.google.com/privacy.\n• **Google Maps Platform** — interactive project location maps. See policies.google.com/privacy.\n• **Vercel** — website hosting. See vercel.com/legal/privacy-policy.',
+      },
+      {
+        title: '6. Data Security',
+        body: 'We implement reasonable technical and organisational measures to protect your personal information against unauthorised access, loss, or disclosure. All data transmitted between your browser and our website is encrypted via HTTPS/TLS.\n\nHowever, no internet transmission is entirely secure. We cannot guarantee absolute security, but we take all reasonable precautions.',
+      },
+      {
+        title: '7. Data Retention',
+        body: 'Enquiry and contact form submissions are retained in our email system for as long as is necessary to respond to your enquiry or maintain our business relationship. Website analytics data is retained for 14 months in Google Analytics, after which it is automatically deleted.',
+      },
+      {
+        title: '8. Your Rights',
+        body: 'Depending on your jurisdiction, you may have the right to:\n• Access the personal data we hold about you\n• Request correction of inaccurate data\n• Request deletion of your data\n• Object to processing of your data\n• Withdraw consent at any time\n\nTo exercise any of these rights, please contact us at sunriseoceanengineering@outlook.com.',
+      },
+      {
+        title: '9. International Transfers',
+        body: 'Our website and services are operated from Hong Kong. If you access our website from outside Hong Kong, your data may be transferred to and processed in Hong Kong or where our third-party service providers operate. By using this website, you consent to such transfers.',
+      },
+      {
+        title: '10. Children\'s Privacy',
+        body: 'Our services are directed at business and professional clients. We do not knowingly collect personal information from individuals under the age of 18. If you believe we have inadvertently collected such information, please contact us and we will delete it promptly.',
+      },
+      {
+        title: '11. Updates to This Policy',
+        body: 'We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. When we do, we will update the "Last Updated" date at the top of this page. We encourage you to review this page periodically.',
+      },
+      {
+        title: '12. Contact Us',
+        body: 'If you have any questions about this Privacy Policy or how we handle your data, please contact:\n\nSunrise Ocean Engineering Limited\nFlat/Rm 63, 07/F, Woon Lee Commercial Building,\n7-9 Austin Avenue, Tsim Sha Tsui, Kowloon, Hong Kong\nEmail: sunriseoceanengineering@outlook.com\nPhone: +852 9167 0580',
+      },
+    ],
   },
   seo: {
     home: {
