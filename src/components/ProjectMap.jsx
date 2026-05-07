@@ -1,79 +1,105 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+import { useState } from 'react';
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 import { projectCoords } from '../data/projectCoords';
 
-// Custom gold marker icon (SVG inlined as data URL)
-const goldIcon = L.divIcon({
-  className: 'soe-marker',
-  html: `<div style="
-    width: 22px; height: 22px;
-    background: #C9A84C;
-    border: 2px solid #0A1628;
-    border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    display: flex; align-items: center; justify-content: center;
-  "><div style="
-    width: 7px; height: 7px;
-    background: #0A1628;
-    border-radius: 50%;
-    transform: rotate(45deg);
-  "></div></div>`,
-  iconSize: [22, 22],
-  iconAnchor: [11, 22],
-  popupAnchor: [0, -22],
-});
+const DARK_STYLE = [
+  { elementType: 'geometry', stylers: [{ color: '#0d1f3c' }] },
+  { elementType: 'labels.text.stroke', stylers: [{ color: '#0a1628' }] },
+  { elementType: 'labels.text.fill', stylers: [{ color: '#8ab4d4' }] },
+  { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#1f3a5f' }] },
+  { featureType: 'landscape.natural', elementType: 'geometry', stylers: [{ color: '#0a1e3a' }] },
+  { featureType: 'poi', elementType: 'geometry', stylers: [{ color: '#0d2040' }] },
+  { featureType: 'poi', elementType: 'labels.text.fill', stylers: [{ color: '#6b8cba' }] },
+  { featureType: 'poi.park', elementType: 'geometry', stylers: [{ color: '#0a2035' }] },
+  { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#1e3a5f' }] },
+  { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#0d2040' }] },
+  { featureType: 'road', elementType: 'labels.text.fill', stylers: [{ color: '#9ca8b8' }] },
+  { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#1a3460' }] },
+  { featureType: 'road.highway', elementType: 'geometry.stroke', stylers: [{ color: '#0e2040' }] },
+  { featureType: 'transit', elementType: 'geometry', stylers: [{ color: '#0d2040' }] },
+  { featureType: 'transit.station', elementType: 'labels.text.fill', stylers: [{ color: '#6b8cba' }] },
+  { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#06111f' }] },
+  { featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: '#3d5a7a' }] },
+  { featureType: 'water', elementType: 'labels.text.stroke', stylers: [{ color: '#06111f' }] },
+];
+
+const GOLD_ICON = {
+  path: 'M 0,0 C -2,-20 -10,-22 -10,-30 A 10,10 0 1,1 10,-30 C 10,-22 2,-20 0,0 z',
+  fillColor: '#C9A84C',
+  fillOpacity: 1,
+  strokeColor: '#0A1628',
+  strokeWeight: 1.5,
+  scale: 1,
+  anchor: { x: 0, y: 0 },
+};
 
 export default function ProjectMap({ projects }) {
+  const [activeIdx, setActiveIdx] = useState(null);
+
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_KEY,
+  });
+
+  if (!isLoaded) {
+    return (
+      <div className="rounded-2xl overflow-hidden border border-white/10 h-[420px] bg-navy-900 flex items-center justify-center">
+        <span className="text-white/40 text-sm">地图加载中…</span>
+      </div>
+    );
+  }
+
   return (
-    <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-white">
-      <MapContainer
-        center={[15, 110]}
+    <div className="rounded-2xl overflow-hidden border border-white/10 shadow-sm">
+      <GoogleMap
+        mapContainerClassName="h-[420px] w-full"
+        center={{ lat: 15, lng: 112 }}
         zoom={3}
-        scrollWheelZoom={false}
-        className="h-[420px] w-full"
-        worldCopyJump={true}
+        options={{
+          styles: DARK_STYLE,
+          zoomControl: true,
+          streetViewControl: false,
+          mapTypeControl: false,
+          fullscreenControl: false,
+          scrollwheel: false,
+        }}
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-        />
         {projects.map((proj, i) => {
           const c = projectCoords[i];
           if (!c) return null;
-          const thumb = proj.images?.[0] || proj.image || null;
           return (
-            <Marker key={i} position={[c.lat, c.lng]} icon={goldIcon}>
-              <Popup minWidth={200} maxWidth={260}>
-                <div style={{ width: '220px' }}>
-                  {thumb && (
-                    <img
-                      src={thumb}
-                      alt=""
-                      style={{
-                        width: '100%',
-                        height: '120px',
-                        objectFit: 'cover',
-                        borderRadius: '6px',
-                        marginBottom: '8px',
-                        display: 'block',
-                      }}
-                      onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                    />
-                  )}
-                  <div style={{ fontWeight: 600, color: '#0A1628', fontSize: '13px', lineHeight: 1.4, marginBottom: '4px' }}>
-                    {proj.nameShort || proj.name}
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#6B7280' }}>
-                    {proj.location} · {proj.category}
-                  </div>
-                </div>
-              </Popup>
-            </Marker>
+            <Marker
+              key={i}
+              position={{ lat: c.lat, lng: c.lng }}
+              icon={GOLD_ICON}
+              onClick={() => setActiveIdx(i)}
+            />
           );
         })}
-      </MapContainer>
+
+        {activeIdx !== null && projectCoords[activeIdx] && (
+          <InfoWindow
+            position={{ lat: projectCoords[activeIdx].lat, lng: projectCoords[activeIdx].lng }}
+            onCloseClick={() => setActiveIdx(null)}
+          >
+            <div style={{ width: '210px' }}>
+              {projects[activeIdx]?.images?.[0] && (
+                <img
+                  src={projects[activeIdx].images[0]}
+                  alt=""
+                  style={{ width: '100%', height: '110px', objectFit: 'cover', borderRadius: '5px', marginBottom: '7px', display: 'block' }}
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
+              )}
+              <div style={{ fontWeight: 700, color: '#0A1628', fontSize: '13px', lineHeight: 1.4, marginBottom: '4px' }}>
+                {projects[activeIdx]?.nameShort || projects[activeIdx]?.name}
+              </div>
+              <div style={{ fontSize: '11px', color: '#6B7280' }}>
+                {projects[activeIdx]?.location} · {projects[activeIdx]?.category}
+              </div>
+            </div>
+          </InfoWindow>
+        )}
+      </GoogleMap>
     </div>
   );
 }
