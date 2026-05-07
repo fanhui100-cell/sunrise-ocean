@@ -23,6 +23,7 @@ export default function Navbar() {
   const [langOpen, setLangOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const langRef = useRef(null);
+  const mobileLangRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -36,7 +37,9 @@ export default function Navbar() {
 
   useEffect(() => {
     const handler = (e) => {
-      if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(false);
+      const inDesktop = langRef.current && langRef.current.contains(e.target);
+      const inMobile = mobileLangRef.current && mobileLangRef.current.contains(e.target);
+      if (!inDesktop && !inMobile) setLangOpen(false);
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
@@ -142,7 +145,7 @@ export default function Navbar() {
             >
               <Search size={18} />
             </button>
-            <div className="relative">
+            <div className="relative" ref={mobileLangRef}>
               <button
                 onClick={() => setLangOpen((o) => !o)}
                 className="flex items-center gap-1 px-2.5 py-1.5 border border-navy-900/30 text-navy-900 text-xs rounded hover:bg-navy-900/8 transition-colors"

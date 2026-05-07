@@ -54,13 +54,13 @@ export default function About() {
       <section className="bg-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-5">
-            <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
+            <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
               {t('about.body1')}
             </p>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
               {t('about.body2')}
             </p>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
               {t('about.body3')}
             </p>
           </div>
