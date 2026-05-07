@@ -42,8 +42,9 @@ export default function ProjectMap({ projects }) {
 
   if (!isLoaded) {
     return (
-      <div className="rounded-2xl overflow-hidden border border-white/10 h-[420px] bg-navy-900 flex items-center justify-center">
-        <span className="text-white/40 text-sm">地图加载中…</span>
+      <div className="rounded-2xl overflow-hidden border border-gray-200 h-[420px] bg-[#F5F7FA] flex flex-col items-center justify-center gap-3">
+        <div className="w-7 h-7 border-2 border-gold-500/30 border-t-gold-500 rounded-full animate-spin" />
+        <span className="text-gray-400 text-sm">地圖載入中…</span>
       </div>
     );
   }

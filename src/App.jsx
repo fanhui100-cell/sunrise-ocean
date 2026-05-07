@@ -3,6 +3,7 @@ import './i18n/index.js';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import NavProgress from './components/NavProgress';
 import BackToTop from './components/BackToTop';
 import CookieBanner from './components/CookieBanner';
 import QuickContact from './components/QuickContact';
@@ -17,6 +18,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <NavProgress />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-1">

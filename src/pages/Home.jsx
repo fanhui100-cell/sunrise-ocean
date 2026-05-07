@@ -36,13 +36,14 @@ function FeaturedProjectCard({ proj }) {
   const [imgError, setImgError] = useState(false);
   const thumb = proj.images && proj.images[0];
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+    <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100 group">
       {thumb && !imgError ? (
         <div className="relative h-32 overflow-hidden bg-navy-900">
           <img
             src={thumb}
             alt={proj.nameShort || proj.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
             onError={() => setImgError(true)}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent" />

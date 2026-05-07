@@ -45,7 +45,7 @@ function OceanPattern() {
 }
 
 export default function Contact() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [form, setForm] = useState({ name: '', email: '', company: '', subject: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -62,7 +62,7 @@ export default function Contact() {
     try {
       const payload = {
         access_key: WEB3FORMS_ACCESS_KEY,
-        subject: `[瀹樼恫瑭㈠晱] ${form.subject || form.name}`,
+        subject: `[Sunrise Ocean 官網詢問] ${form.subject || form.name}`,
         from_name: 'Sunrise Ocean Website',
         ...form,
       };
@@ -206,7 +206,17 @@ export default function Contact() {
                 {submitted ? (
                   <div className="flex flex-col items-center justify-center py-16 text-center">
                     <CheckCircle size={48} className="text-green-500 mb-4" />
-                    <p className="text-gray-700 font-medium text-lg">{t('contact.form_success')}</p>
+                    <p className="text-gray-700 font-medium text-lg mb-2">{t('contact.form_success')}</p>
+                    <p className="text-gray-400 text-sm mb-8">
+                      {i18n.language === 'en' ? 'We will get back to you shortly.' : '我們將盡快與您聯繫。'}
+                    </p>
+                    <button
+                      onClick={() => { setSubmitted(false); setForm({ name: '', email: '', company: '', subject: '', message: '' }); }}
+                      className="inline-flex items-center gap-2 text-navy-900 border border-navy-900/30 px-5 py-2.5 rounded-lg text-sm hover:bg-navy-900/5 transition-colors"
+                    >
+                      <Send size={14} />
+                      {i18n.language === 'en' ? 'Send Another Inquiry' : '重新發送詢問'}
+                    </button>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">

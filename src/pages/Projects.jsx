@@ -133,11 +133,11 @@ function ProjectModal({ project, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4 bg-black/60 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+        className="bg-white rounded-t-2xl sm:rounded-2xl max-w-3xl w-full max-h-[92vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative">
@@ -193,18 +193,22 @@ function ProjectCard({ project, onClick, viewDetailsLabel }) {
   const hasDetails = (project.details && project.details.length > 0) || images.length > 0;
   const thumb = images[0];
   const [thumbError, setThumbError] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   return (
     <div
-      className={`bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 flex flex-col ${hasDetails ? 'cursor-pointer hover:-translate-y-0.5' : ''}`}
+      className={`bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col group ${hasDetails ? 'cursor-pointer hover:-translate-y-1' : ''}`}
       onClick={hasDetails ? onClick : undefined}
     >
       {thumb && !thumbError ? (
         <div className="relative h-44 overflow-hidden bg-navy-900">
+          {!imgLoaded && <div className="absolute inset-0 bg-gray-200 animate-pulse" />}
           <img
             src={thumb}
             alt={project.nameShort || project.name}
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+            loading="lazy"
+            onLoad={() => setImgLoaded(true)}
             onError={() => setThumbError(true)}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent" />
@@ -249,6 +253,12 @@ export default function Projects() {
   const [showMap, setShowMap] = useState(true);
 
   useEffect(() => { setFilter('all'); }, [i18n.language]);
+
+  useEffect(() => {
+    const handler = (e) => { if (e.key === 'Escape') setSelected(null); };
+    if (selected) document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, [selected]);
 
   const categories = ['all', ...new Set(projects.map((p) => p.category))];
   const filtered = filter === 'all' ? projects : projects.filter((p) => p.category === filter);
@@ -301,7 +311,12 @@ export default function Projects() {
 
           {showMap && (
             <div className="mb-10 relative z-0">
-              <Suspense fallback={<div className="h-[420px] bg-white rounded-2xl border border-gray-200 flex items-center justify-center text-gray-400 text-sm">Loading map...</div>}>
+              <Suspense fallback={
+                <div className="h-[420px] bg-[#F5F7FA] rounded-2xl border border-gray-200 flex flex-col items-center justify-center gap-3">
+                  <div className="w-7 h-7 border-2 border-gold-500/30 border-t-gold-500 rounded-full animate-spin" />
+                  <span className="text-gray-400 text-sm">地圖載入中…</span>
+                </div>
+              }>
                 <ProjectMap projects={projects} />
               </Suspense>
             </div>
