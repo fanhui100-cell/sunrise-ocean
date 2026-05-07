@@ -734,6 +734,7 @@ const en = {
     address: 'Flat/Rm 63, 07/F, Woon Lee Commercial Building, 7-9 Austin Avenue, Tsim Sha Tsui, Kowloon, Hong Kong',
     email_label: 'Email',
     email: 'sunriseoceanengineering@outlook.com',
+    phone_label: 'Phone',
     business_label: 'Service Coverage',
     business: 'Hong Kong, Macao & Overseas Engineering',
     coverage_regions: ['Hong Kong', 'Macao', 'Indonesia', 'Vietnam', 'Pakistan', 'Bangladesh', 'Malaysia', 'Philippines', 'Cambodia', 'Middle East', 'Africa'],

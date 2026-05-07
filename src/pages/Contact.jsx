@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Anchor, MapPin, Mail, Building2, Send, CheckCircle, AlertCircle, Loader2, Plus, FileUp, X } from 'lucide-react';
+import { Anchor, MapPin, Mail, Building2, Phone, MessageCircle, Send, CheckCircle, AlertCircle, Loader2, Plus, FileUp, X, Shield } from 'lucide-react';
 import HeroBg from '../components/HeroBg';
 import SEO from '../components/SEO';
 
@@ -146,7 +146,10 @@ export default function Contact() {
   const infoItems = [
     { icon: MapPin, label: t('contact.address_label'), value: t('contact.address') },
     { icon: Mail, label: t('contact.email_label'), value: t('contact.email'), href: `mailto:${t('contact.email')}` },
+    { icon: Phone, label: t('contact.phone_label'), value: '+852 9167 0580', href: 'tel:+85291670580' },
+    { icon: MessageCircle, label: 'WhatsApp', value: '+852 9167 0580', href: 'https://wa.me/85291670580' },
     { icon: Building2, label: t('contact.business_label'), value: t('contact.business') },
+    { icon: Shield, label: 'BR No.', value: '78096706-000-05-26-A' },
   ];
 
   const serviceNames = t('services.items', { returnObjects: true }).map((s) => s.name);

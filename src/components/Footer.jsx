@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MapPin, Anchor, Mail, MessageCircle } from 'lucide-react';
+import { MapPin, Anchor, Mail, MessageCircle, Phone } from 'lucide-react';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -26,7 +26,8 @@ export default function Footer() {
             <p className="text-white/50 text-sm leading-relaxed mb-2">
               Sunrise Ocean Engineering Limited
             </p>
-            <p className="text-white/40 text-sm italic">{t('footer.tagline')}</p>
+            <p className="text-white/40 text-sm italic mb-3">{t('footer.tagline')}</p>
+            <p className="text-white/25 text-xs">BR No. 78096706-000-05-26-A</p>
           </div>
 
           {/* Quick Links */}
@@ -68,6 +69,12 @@ export default function Footer() {
                 </a>
               </div>
               <div className="flex items-start gap-2 text-white/50 text-sm">
+                <Phone size={14} className="mt-0.5 shrink-0 text-gold-500/70" />
+                <a href="tel:+85291670580" className="hover:text-gold-400 transition-colors">
+                  +852 9167 0580
+                </a>
+              </div>
+              <div className="flex items-start gap-2 text-white/50 text-sm">
                 <MessageCircle size={14} className="mt-0.5 shrink-0 text-gold-500/70" />
                 <a
                   href="https://wa.me/85291670580"
@@ -82,8 +89,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-10 pt-6 text-center">
+        <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-white/30 text-xs">{t('footer.copyright')}</p>
+          <Link to="/privacy" className="text-white/25 hover:text-white/50 text-xs transition-colors">
+            Privacy Policy
+          </Link>
         </div>
       </div>
     </footer>

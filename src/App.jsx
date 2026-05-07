@@ -16,6 +16,7 @@ import Services from './pages/Services';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 function RTLHandler() {
   const { i18n } = useTranslation();
@@ -42,6 +43,7 @@ export default function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
+<Route path="/privacy" element={<PrivacyPolicy />} />
 <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

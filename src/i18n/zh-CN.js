@@ -736,6 +736,7 @@ const zhCN = {
     address: '香港九龙尖沙咀柯士甸路7-9号运利商业大厦7楼63室',
     email_label: '电子邮箱',
     email: 'sunriseoceanengineering@outlook.com',
+    phone_label: '联系电话',
     business_label: '业务范围',
     business: '港澳及海外工程服务',
     coverage_regions: ['香港 HK', '澳门 Macao', '印度尼西亚', '越南', '巴基斯坦', '孟加拉国', '马来西亚', '菲律宾', '柬埔寨', '中东', '非洲'],
